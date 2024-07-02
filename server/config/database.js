@@ -1,10 +1,12 @@
-const { MongoClient } = require('mongodb')
+const mongoose = require("mongoose");
 
-// Create Instance of MongoClient for mongodb
-const client = new MongoClient('mongodb://localhost:27017')
+const connectDatabase = async () => {
+  try {
+    await mongoose.connect("mongodb://localhost:27017/auth-app");
+    console.log("Database is connected...");
+  } catch (error) {
+    console.log("Database connection failed!!", error);
+  }
+};
 
-// Connect to database
-client.connect()
-    .then(() => console.log('Connected Successfully'))
-    .catch(error => console.log('Failed to connect', error))
-
+module.exports = { connectDatabase };
