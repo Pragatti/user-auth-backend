@@ -1,12 +1,11 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const connectDatabase = async () => {
-  try {
-    await mongoose.connect("mongodb://localhost:27017/auth-app");
-    console.log("Database is connected...");
-  } catch (error) {
-    console.log("Database connection failed!!", error);
-  }
-};
-
-module.exports = { connectDatabase };
+mongoose.connect('mongodb://localhost:27017/mydatabase', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    // useCreateIndex: true, // Remove this line
+}).then(() => {
+    console.log('MongoDB connected successfully');
+}).catch(err => {
+    console.error('MongoDB connection error:', err);
+});
