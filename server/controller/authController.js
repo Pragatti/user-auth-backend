@@ -7,26 +7,7 @@ const validateEmail = (email) => {
 };
 
 const handleSignUpApi = async (req, res) => {
-
-  const { firstname, lastname, email, password } = req.body;
-  if (!firstname) {
-    return res.status(400).json({ msg: 'Firstname is required' });
-  }
-  if (!lastname) {
-    return res.status(400).json({ msg: 'Lastname is required' });
-  }
-  if (!email) {
-    return res.status(400).json({ msg: 'Email is required' });
-  }
-  if (!password) {
-    return res.status(400).json({ msg: 'Password is required' });
-  }
-
-
-  // Validate email format
-  if (!validateEmail(email)) {
-    return res.status(400).json({ msg: 'Invalid email format' });
-  }
+const { firstname, lastname, email, password } = req.body;
 
   try {
     // Check if the user already exists
@@ -54,16 +35,10 @@ const handleSignUpApi = async (req, res) => {
   }
 };
 const handleLoginApi = async (req, res) => {
-  console.log(req, "request");
+ 
   const { email, password } = req.body;
 
-  // Validate required fields
-  if (!email) {
-    return res.status(400).json({ msg: 'Email is required' });
-  }
-  if (!password) {
-    return res.status(400).json({ msg: 'Password is required' });
-  }
+
 
   try {
     // Check if the user exists
