@@ -1,10 +1,7 @@
 const User = require("../models/usermodel");
-
+const bcrypt = require('bcryptjs');
 // Function to validate email format
-const validateEmail = (email) => {
-  const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  return re.test(String(email).toLowerCase());
-};
+
 
 const handleSignUpApi = async (req, res) => {
 const { firstname, lastname, email, password } = req.body;
@@ -12,12 +9,8 @@ const { firstname, lastname, email, password } = req.body;
   try {
     // Check if the user already exists
     let user = await User.findOne({ email });
-   if(!firstname){
-    return res.status(400).json({ msg: 'User already exists' });
-   }
-    if (user) {
-      return res.status(400).json({ msg: 'User already exists' });
-    }
+  
+ 
 
     // Create a new user
     user = new User({
