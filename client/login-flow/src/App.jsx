@@ -1,25 +1,24 @@
-import React,{useState,useEffect} from "react"
-import { useDispatch} from 'react-redux'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Header from './components/Header'
+import LoginScreen from './screens/LoginScreen'
+import RegisterScreen from './screens/RegisterScreen'
+import ProfileScreen from './screens/ProfileScreen'
+import HomeScreen from './screens/HomeScreen'
 import './App.css'
-import { login } from "./store/authSlice"
 
 function App() {
- const[loading,setLoading] = useState(false)
- const dispatch = useDispatch()
-
- useEffect(()=>{ 
-  
-    dispatch(login("pragatti"))
-  
- 
-  
- },[])
-
-  return  !loading?<div className="min-h-screen flex">  hello
-
-  </div>:null;
-  
-  
+  return (
+    <Router>
+      <Header />
+      <main className='container content'>
+        <Routes>
+          <Route path='/' element={<HomeScreen />} />
+          <Route path='/login' element={<LoginScreen />} />
+          <Route path='/register' element={<RegisterScreen />} />
+          <Route path='/user-profile' element={<ProfileScreen />} />
+        </Routes>
+      </main>
+    </Router>
+  )
 }
-
 export default App
