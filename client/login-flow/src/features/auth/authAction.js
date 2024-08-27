@@ -5,8 +5,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 const backendURL = 'http://127.0.0.1:5000'
 
 export const registerUser = createAsyncThunk(
-  'auth/register',
-  async ({ firstName, email, password }, { rejectWithValue }) => {
+  'auth/login',
+  async ({ first_name,last_name, email, password }, { rejectWithValue }) => {
     try {
       const config = {
         headers: {
@@ -14,8 +14,8 @@ export const registerUser = createAsyncThunk(
         },
       }
       await axios.post(
-        `${backendURL}/api/user/register`,
-        { firstName, email, password },
+        `${backendURL}/login`,
+        { first_name, last_name, email,password },
         config
       )
     } catch (error) {
