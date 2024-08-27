@@ -1,12 +1,15 @@
 import { useForm } from 'react-hook-form'
+import { loginUser } from '../hooks/useAuth'
 
 const LoginScreen = () => {
   const { register, handleSubmit } = useForm()
 
   const submitForm = (data) => {
     console.log(data)
+  loginUser(data)
   }
 
+ 
   return (
     <form onSubmit={handleSubmit(submitForm)} className="max-w-sm mx-auto bg-white p-6 shadow-md rounded-lg">
     <div className="form-group mb-4">
