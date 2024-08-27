@@ -33,11 +33,11 @@ const handleSignUpApi = async (req, res) => {
 // Handle Login User
 const handleLoginApi = async (req, res) => {
   const { email, password } = req.body;
-
+ console.log("data",email,password)
   try {
     // Check if the user exists
     let user = await User.findOne({ email });
-
+     console.log("user",user)
     if (!user) {
       return res.status(400).json({ msg: "Invalid credentials" });
     }
@@ -46,6 +46,7 @@ const handleLoginApi = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
+       console.log("res",res)
       return res.status(400).json({ msg: "Invalid credentials" });
     }
 
