@@ -2,11 +2,11 @@ import { useForm } from 'react-hook-form'
 import { loginUser } from '../hooks/useAuth'
 
 const LoginScreen = () => {
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit ,formState: { errors },} = useForm()
 
   const submitForm = (data) => {
-    console.log(data)
-  loginUser(data)
+     loginUser(data)
+
   }
 
  
