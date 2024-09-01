@@ -36,7 +36,7 @@ export const registerUser =async(data)=>{
         console.log(responseData);
     }
     catch(err){
-    console.log(err)
+    console.log(err,"err")
 }
 
 }
